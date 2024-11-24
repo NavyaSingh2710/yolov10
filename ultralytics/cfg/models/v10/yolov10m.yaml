@@ -41,3 +41,25 @@ head:
   - [-1, 3, C2fCIB, [1024, True]] # 22 (P5/32-large)
 
   - [[16, 19, 22], 1, v10Detect, [nc]] # Detect(P3, P4, P5)
+
+  augmentations:
+  random_perspective: True
+  augment_hsv: True
+  cutout: True
+  mixup: True
+  random_perspective_params:
+    degrees: 10
+    translate: 0.1
+    scale: 0.1
+    shear: 0.1
+    perspective: 0.0
+  augment_hsv_params:
+    hgain: 0.015
+    sgain: 0.7
+    vgain: 0.4
+  cutout_params:
+    n_holes: 3
+    length: 16
+  mixup_params:
+    alpha: 1.5
+
