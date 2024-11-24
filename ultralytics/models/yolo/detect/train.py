@@ -65,6 +65,11 @@ class DetectionTrainer(BaseTrainer):
         return build_yolo_dataset(self.args, img_path, batch, self.data, mode=mode, rect=mode == "val", stride=gs)
     
     def get_dataloader(self, dataset_path, batch_size=16, rank=0, mode="train"):
+        # Apply augmentations to each batch of data
+        for batch in data_loader:
+          images, labels = batch
+          images, labels = apply_augmentations(images, labels)
+
         """Construct and return dataloader."""
         assert mode in ["train", "val"]
         with torch_distributed_zero_first(rank):  # init dataset *.cache only once if DDP
