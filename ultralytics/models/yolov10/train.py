@@ -4,6 +4,7 @@ from .model import YOLOv10DetectionModel
 from copy import copy
 from ultralytics.utils import RANK
 
+
 class YOLOv10DetectionTrainer(DetectionTrainer):
     def get_validator(self):
         """Returns a DetectionValidator for YOLO model validation."""
